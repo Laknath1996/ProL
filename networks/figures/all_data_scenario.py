@@ -42,7 +42,11 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
     for i, m in enumerate(methods):
         plt.plot(info[m][2], info[m][0], c='C%d' % i)
 
-    plt.axhline(y=0.0, color='black', linestyle='--')
+    if "_m2" in figname:
+        plt.axhline(y=0.2768, color='black', linestyle='--')
+    elif figname == "cifar_scenario3_m2":
+        plt.axhline(y=0.0, color='black', linestyle='--')
+
 
     for i, m in enumerate(methods):
         plt.scatter(info[m][2], info[m][0], c='C%d' % i, s=size)
@@ -100,11 +104,31 @@ def cifar_scenario3_all():
     info = np.load("./metrics/cifar_scenario3.pkl", allow_pickle=True)
     make_plot(info, "CIFAR Scenario 3", figname="cifar_scenario3_all", outside_legend=True)
 
-synthetic_scenario2()
-synthetic_scenario3()
+def synthetic_scenario3_m2():
+    info = np.load("./metrics/syn_scenario3_markov2.pkl", allow_pickle=True)
+    make_plot(info, "Synthetic Scenario 3", figname="syn_scenario3_m2")
+
+def mnist_scenario3_m2():
+    info = np.load("./metrics/mnist_scenario3_markov2.pkl", allow_pickle=True)
+    make_plot(info, "MNIST Scenario 3", figname="mnist_scenario3_m2", minimal=True)
+
+def cifar_scenario3_m2():
+    info = np.load("./metrics/cifar_scenario3_markov2.pkl", allow_pickle=True)
+    make_plot(info, "CIFAR Scenario 3", figname="cifar_scenario3_m2",
+              plot_index=[0, 1], minimal=True)
+
+# synthetic_scenario2()
+# synthetic_scenario3()
+# synthetic_scenario3_m2()
+
 # mnist_scenario2()
 # mnist_scenario3()
+# mnist_scenario3_m2()
+
 # cifar_scenario2()
 # cifar_scenario3()
+# cifar_scenario3_m2()
+
 # cifar_scenario2_all()
-cifar_scenario3_all()
+# cifar_scenario3_all()
+

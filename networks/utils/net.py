@@ -112,7 +112,6 @@ class ProspectiveMLP(nn.Module):
     def __init__(self, cfg, in_dim, out_dim, hidden_dim, tdim=50):
         super(ProspectiveMLP, self).__init__()
         self.time_embed = TimeEmbedding(cfg.dev, tdim)
-        # self.time_embed = DiscreteTime(cfg.dev, tdim)
         in_dim += tdim
 
         self.fc1 = nn.Linear(in_dim, hidden_dim)

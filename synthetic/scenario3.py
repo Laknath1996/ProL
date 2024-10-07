@@ -8,16 +8,15 @@ gamma = 0.9
 
 
 class Data_Scenario3():
-    def __init__(self, p=0.9, τ=30, max_t=1000):
+    def __init__(self, p=0.9, τ=30, ntest=100):
         self.p = [[p, 1-p], [1-p, p]]
         self.τ = τ
-        self.max_t = max_t
+        self.ntest = 50
 
     def get_samples(self, t):
         y0 = np.random.choice([0, 1])
         y_seq = [y0]
-        # for _ in range(self.max_t-1):
-        for _ in range(t + 50 - 1):
+        for _ in range(t + self.ntest - 1):
             y_seq.append(np.random.choice([0, 1], p=self.p[y_seq[-1]]))
         y_train, y_test = y_seq[:t], y_seq[t:]
         return y_train, y_test
@@ -41,7 +40,7 @@ class Data_Scenario3():
 
     def estimator_erm(self, samples):
         p_hat = np.mean(samples)
-        ntest = 20
+        ntest = self.ntest
         return np.ones(ntest) * p_hat
 
     def estimator_prospective(self, samples):
@@ -66,7 +65,7 @@ class Data_Scenario3():
         p_hat = []
         ystart = samples[-1]
 
-        for t in range(20):
+        for t in range(self.ntest):
             if np.abs(cur_probs[ystart, 0] - 0.5) < 1e-5:
                 ycur = np.random.choice([0, 1])
             else:
@@ -100,11 +99,11 @@ if __name__ == "__main__":
     np.random.seed(0)
     p=0.1
     seeds = 10000
-    max_t = 90
+    ntest = 100
     run_t = 30
     times = np.arange(2, run_t-1)
 
-    dat = Data_Scenario3(p, run_t, max_t)
+    dat = Data_Scenario3(p, run_t, ntest)
     errs_erm = dat.get_errs(seeds, 0)
     errs_prospective = dat.get_errs(seeds, 1)
 
@@ -167,6 +166,7 @@ if __name__ == "__main__":
 
     plt.title("Dependent samples from Markov Chain")
     plt.xlabel("Number of samples / Time (t)")
+    plt.show()
     # plt.savefig("plots/scenario3_avg.pdf", bbox_inches='tight')
 
     if DISC:
