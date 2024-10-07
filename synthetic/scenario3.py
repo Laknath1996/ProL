@@ -17,7 +17,7 @@ class Data_Scenario3():
         y0 = np.random.choice([0, 1])
         y_seq = [y0]
         # for _ in range(self.max_t-1):
-        for _ in range(t + 20 - 1):
+        for _ in range(t + 50 - 1):
             y_seq.append(np.random.choice([0, 1], p=self.p[y_seq[-1]]))
         y_train, y_test = y_seq[:t], y_seq[t:]
         return y_train, y_test
