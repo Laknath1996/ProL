@@ -49,7 +49,9 @@ class Scenario3:
         tseq = []
         for sd in range(self.num_seeds):
             if self.variant == 'markov2':
-                dat = self.gen_sequence_markov2(sd)
+                dat = self.gen_sequence_markov2(sd, stationary=False)
+            if self.variant == 'markov2_s':
+                dat = self.gen_sequence_markov2(sd, stationary=True)
             elif self.variant == 'markov4':
                 dat = self.gen_sequence_markov4(sd)
             else:
@@ -104,7 +106,7 @@ class SyntheticScenario2(Scenario2):
             pickle.dump(self.data, fp)
 
 
-class SyntheticScenario3(Scenario2):
+class SyntheticScenario3(Scenario3):
     """
     Generate data from a markov process
     """
@@ -153,7 +155,7 @@ class SyntheticScenario3(Scenario2):
 
         return Xdat, Ydat, tind
 
-    def gen_sequence_markov2(self, seed):
+    def gen_sequence_markov2(self, seed, stationary=False):
         np.random.seed(seed)
     
         # Create task indices
@@ -164,7 +166,7 @@ class SyntheticScenario3(Scenario2):
             tind.append(cur_t)
     
             # Every T steps, switch task
-            if (i + 1) % T == 0:
+            if (not stationary) and (i + 1) % T == 0:
                 cur_t = 0
             else:
                 # Change task with probability 0.9
@@ -262,7 +264,7 @@ class MnistScenario3(Scenario3):
             get_ind.append(np.where(targets == i)[0])
         self.yind = get_ind
 
-    def gen_sequence_markov2(self, seed):
+    def gen_sequence_markov2(self, seed, stationary=False):
         np.random.seed(seed)
 
         # task 1 - {0, 1, 2, 3, 4}
@@ -287,7 +289,7 @@ class MnistScenario3(Scenario3):
             xseq.append(self.dataset.data[xind].reshape(-1) / 255.5)
 
             # Every T steps, switch task
-            if (i + 1) % T == 0:
+            if (not stationary) and (i + 1) % T == 0:
                 cur_t = 0
             elif np.random.rand() < 0.9:
                 cur_t = 1 - cur_t
