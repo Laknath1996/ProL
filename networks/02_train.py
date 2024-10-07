@@ -10,11 +10,18 @@ from utils.runner import train
 from utils.bgd import BGD
 
 def create_optimizer(cfg, net):
+
+    if 'mnist' or 'cifar' in data.path:
+        lr = 0.01
+    else:
+        lr = 0.1 # for synthetic
+
+
     if cfg.bgd:
         params = [{'params': [p]} for p in net.parameters()]
         optimizer = BGD(params, std_init=0.01)
     else:
-        optimizer = torch.optim.SGD(net.parameters(), lr=0.01,
+        optimizer = torch.optim.SGD(net.parameters(), lr=lr,
                                     momentum=0.9, nesterov=True,
                                     weight_decay=0.00001)
     return optimizer
