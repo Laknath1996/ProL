@@ -112,6 +112,7 @@ def mnist_scenario2():
 def mnist_scenario3():
     info = np.load("./metrics/mnist_scenario3.pkl", allow_pickle=True)
     make_plot(info, "MNIST Scenario 3", figname="mnist_scenario3", minimal=True)
+              
 
 def cifar_scenario2():
     info = np.load("./metrics/cifar_scenario2.pkl", allow_pickle=True)
@@ -121,7 +122,7 @@ def cifar_scenario2():
 def cifar_scenario3():
     info = np.load("./metrics/cifar_scenario3.pkl", allow_pickle=True)
     make_plot(info, "CIFAR Scenario 3", figname="cifar_scenario3",
-              plot_index=[0, 1], minimal=True)
+              plot_index=[0, 1, 2, 3], minimal=True)
 
 def cifar_scenario2_all():
     info = np.load("./metrics/cifar_scenario2.pkl", allow_pickle=True)
@@ -164,21 +165,21 @@ def cifar_scenario3_m2_s(discount=False):
               plot_index=[0, 1], minimal=True, discount=discount)
 
 # synthetic_scenario2()
-# synthetic_scenario3()
+synthetic_scenario3()
 # synthetic_scenario3_m2()
-synthetic_scenario3_m2_s()
-synthetic_scenario3_m2_s(discount=True)
+# synthetic_scenario3_m2_s()
+# synthetic_scenario3_m2_s(discount=True)
 
 # mnist_scenario2()
-# mnist_scenario3()
+mnist_scenario3()
 # mnist_scenario3_m2()
-mnist_scenario3_m2_s()
-mnist_scenario3_m2_s(discount=True)
+# mnist_scenario3_m2_s()
+# mnist_scenario3_m2_s(discount=True)
 
 # cifar_scenario2()
-# cifar_scenario3()
-cifar_scenario3_m2_s()
-cifar_scenario3_m2_s(discount=True)
+cifar_scenario3()
+# cifar_scenario3_m2_s()
+# cifar_scenario3_m2_s(discount=True)
 
 # cifar_scenario2_all()
 # cifar_scenario3_all()
