@@ -56,7 +56,7 @@ def create_metrics(fnames, fout, model_names, discount=False):
             disc_mean = np.mean(disc_seed_errs, axis=0)
             disc_std = np.std(disc_seed_errs, axis=0)
             plot_metrics[model_names[model]] = np.array(
-                    [mean, std, disc_mean, disc_std, times])
+                    [mean, std, times, disc_mean, disc_std])
 
         else:
             plot_metrics[model_names[model]] = np.array([mean, std, times])
