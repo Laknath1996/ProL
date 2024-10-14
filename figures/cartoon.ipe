@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70218" creator="Ipe 7.2.29">
-<info created="D:20241014054058" modified="D:20241014055028"/>
+<info created="D:20241014054058" modified="D:20241014143209"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -313,30 +313,76 @@ h
 <page>
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
-<text layer="alpha" matrix="1 0 0 1 -7.30388 -61.055" transformations="translations" pos="79.1536 746.109" stroke="black" type="label" width="16.92" height="8.896" depth="3.1" valign="baseline" size="huge" style="math">z_1</text>
+<path layer="alpha" matrix="1 0 0 1 0.022047 -76.1025" stroke="black" fill="0.904 0.542 0.764" opacity="50%" stroke-opacity="opaque">
+287.963 636.067 m
+287.963 611.973 l
+320.021 611.973 l
+320.021 636.067 l
+h
+</path>
+<path matrix="1 0 0 1 64.0504 -76.1479" stroke="black" fill="0.904 0.542 0.764" opacity="50%" stroke-opacity="opaque">
+287.963 636.067 m
+287.963 611.973 l
+320.021 611.973 l
+320.021 636.067 l
+h
+</path>
+<path matrix="1 0 0 1 127.946 -75.8377" stroke="black" fill="0.904 0.542 0.764" opacity="50%" stroke-opacity="opaque">
+287.963 636.067 m
+287.963 611.973 l
+320.021 611.973 l
+320.021 636.067 l
+h
+</path>
+<path matrix="1.19628 0 0 1.22493 -30.1045 -169.988" stroke="black" fill="0.553 0.629 0.796" opacity="50%" stroke-opacity="opaque">
+120.242 631.975 m
+120.242 612.111 l
+195.961 612.111 l
+195.961 631.975 l
+h
+</path>
+<path matrix="1 0 0 1 224 -96.0777" stroke="black" fill="0.4 0.76 0.647" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 287.945 -96.0823" stroke="black" fill="0.4 0.76 0.647" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 352 -96.0126" stroke="black" fill="0.4 0.76 0.647" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 224.377 -32.2842" stroke="black" fill="0.4 0.76 0.647" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 288.322 -32.2888" stroke="black" fill="0.4 0.76 0.647" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 352.377 -32.2191" stroke="black" fill="0.4 0.76 0.647" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 223.917 -160.001" stroke="black" fill="0.4 0.76 0.647" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 287.862 -160.005" stroke="black" fill="0.4 0.76 0.647" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 351.917 -159.936" stroke="black" fill="0.4 0.76 0.647" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 63.6275 -96.4925" stroke="black" fill="0.99 0.553 0.383" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 160.002 -95.8665" stroke="black" fill="0.99 0.553 0.383" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<path matrix="1 0 0 1 0.0712006 -95.8832" stroke="black" fill="0.99 0.553 0.383" opacity="50%" stroke-opacity="opaque">
+23.8135 0 0 23.8135 80.0175 784.025 e
+</path>
+<text matrix="1 0 0 1 -7.30388 -61.055" transformations="translations" pos="79.1536 746.109" stroke="black" type="label" width="16.92" height="8.896" depth="3.1" valign="baseline" size="huge" style="math">z_1</text>
 <text matrix="1 0 0 1 9.46882 -55.4312" transformations="translations" pos="126.202 740.572" stroke="black" type="label" width="16.92" height="8.896" depth="3.1" valign="baseline" size="huge" style="math">z_2</text>
 <text matrix="1 0 0 1 -6.62699 -55.3297" transformations="translations" pos="239.255 740.279" stroke="black" type="label" width="14.969" height="8.896" depth="3.1" valign="baseline" size="huge" style="math">z_t</text>
 <text matrix="1 0 0 1 18.6033 -8.4573" transformations="translations" pos="268.951 693.997" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+1}</text>
 <text matrix="1 0 0 1 1.29455 -5.79494" transformations="translations" pos="350.237 691.552" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+2}</text>
 <text matrix="1 0 0 1 -30.7829 -9.48162" transformations="translations" pos="446.202 695.118" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+3}</text>
-<path matrix="1 0 0 1 0.0712006 -95.8832" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
-<path matrix="1 0 0 1 63.6275 -96.4925" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
-<path matrix="1 0 0 1 160.002 -95.8665" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
-<path matrix="1 0 0 1 224 -96.0777" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
-<path matrix="1 0 0 1 287.945 -96.0823" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
-<path matrix="1 0 0 1 352 -96.0126" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
 <path stroke="black" dash="dashed">
 48.0367 715.969 m
 48.0367 659.883 l
@@ -344,31 +390,13 @@ h
 271.99 715.969 l
 h
 </path>
-<text matrix="1 0 0 1 -5.93146 -2.80564" transformations="translations" pos="116.725 726.368" stroke="black" type="label" width="98.234" height="8.963" depth="3.14" valign="baseline" size="large">Realized Past $(z_{\leq t})$</text>
+<text matrix="1 0 0 1 -44.3664 0.45478" transformations="translations" pos="116.725 726.368" stroke="black" type="label" width="132.973" height="12.896" depth="4.29" valign="baseline" size="LARGE">Realized Past $(z_{\leq t})$</text>
 <text matrix="1 0 0 1 18.9807 55.3362" transformations="translations" pos="268.951 693.997" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+1}</text>
 <text matrix="1 0 0 1 1.67196 57.9985" transformations="translations" pos="350.237 691.552" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+2}</text>
 <text matrix="1 0 0 1 -30.4055 54.3118" transformations="translations" pos="446.202 695.118" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+3}</text>
-<path matrix="1 0 0 1 224.377 -32.2842" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
-<path matrix="1 0 0 1 288.322 -32.2888" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
-<path matrix="1 0 0 1 352.377 -32.2191" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
 <text matrix="1 0 0 1 18.5205 -72.3804" transformations="translations" pos="268.951 693.997" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+1}</text>
 <text matrix="1 0 0 1 1.21178 -69.7181" transformations="translations" pos="350.237 691.552" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+2}</text>
 <text matrix="1 0 0 1 -30.8657 -73.4048" transformations="translations" pos="446.202 695.118" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+3}</text>
-<path matrix="1 0 0 1 223.917 -160.001" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
-<path matrix="1 0 0 1 287.862 -160.005" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
-<path matrix="1 0 0 1 351.917 -159.936" stroke="black">
-23.8135 0 0 23.8135 80.0175 784.025 e
-</path>
 <text matrix="1 0 0 1 42.8917 109.198" transformations="translations" pos="137.221 577.847" stroke="black" type="label" width="23.747" height="2.009" depth="0" valign="baseline" size="huge" style="math">\dots</text>
 <text matrix="1 0 0 1 -9.36433 -32.6202" transformations="translations" pos="310.718 816.72" stroke="black" type="label" width="5.158" height="15.642" depth="0" valign="baseline" size="huge" style="math">\vdots</text>
 <text matrix="1 0 0 1 54.8156 -32.4421" transformations="translations" pos="310.718 816.72" stroke="black" type="label" width="5.158" height="15.642" depth="0" valign="baseline" size="huge" style="math">\vdots</text>
@@ -379,44 +407,16 @@ h
 <text matrix="1 0 0 1 326.803 173.158" transformations="translations" pos="137.221 577.847" stroke="black" type="label" width="23.747" height="2.009" depth="0" valign="baseline" size="huge" style="math">\dots</text>
 <text matrix="1 0 0 1 326.79 109.215" transformations="translations" pos="137.221 577.847" stroke="black" type="label" width="23.747" height="2.009" depth="0" valign="baseline" size="huge" style="math">\dots</text>
 <text matrix="1 0 0 1 326.732 45.2096" transformations="translations" pos="137.221 577.847" stroke="black" type="label" width="23.747" height="2.009" depth="0" valign="baseline" size="huge" style="math">\dots</text>
-<text matrix="1 0 0 1 192.781 79.8367" transformations="translations" pos="116.725 726.368" stroke="black" type="label" width="117.418" height="8.965" depth="2.99" valign="baseline" size="large">Potential Futures $(z_{&gt; t})$</text>
+<text matrix="1 0 0 1 170.822 80.3925" transformations="translations" pos="116.725 726.368" stroke="black" type="label" width="158.514" height="12.896" depth="4.29" valign="baseline" size="LARGE">Potential Futures $(z_{&gt; t})$</text>
 <text matrix="1 0 0 1 -11.2252 8.73919" transformations="translations" pos="300.504 534.904" stroke="black" type="label" width="29.386" height="11.961" depth="3.49" valign="baseline" size="LARGE" style="math">h_{t+1} </text>
 <text matrix="1 0 0 1 -26.3374 6.80088" transformations="translations" pos="380.1 536.794" stroke="black" type="label" width="29.386" height="11.961" depth="3.49" valign="baseline" size="LARGE" style="math">h_{t+2}</text>
 <text matrix="1 0 0 1 -42.9447 5.56698" transformations="translations" pos="460.291 538.241" stroke="black" type="label" width="29.386" height="11.961" depth="3.49" valign="baseline" size="LARGE" style="math">h_{t+3}</text>
-<path matrix="1 0 0 1 0.022047 -76.1025" stroke="black">
-287.963 636.067 m
-287.963 611.973 l
-320.021 611.973 l
-320.021 636.067 l
-h
-</path>
-<path matrix="1 0 0 1 64.0504 -76.1479" stroke="black">
-287.963 636.067 m
-287.963 611.973 l
-320.021 611.973 l
-320.021 636.067 l
-h
-</path>
-<path matrix="1 0 0 1 127.946 -75.8377" stroke="black">
-287.963 636.067 m
-287.963 611.973 l
-320.021 611.973 l
-320.021 636.067 l
-h
-</path>
-<text matrix="1 0 0 1 4.70315 -25.8071" transformations="translations" pos="124.992 617.036" stroke="black" type="label" width="60.152" height="8.965" depth="2.99" valign="baseline" size="large">Learner $(L)$</text>
-<path matrix="0.952827 0 0 1.00586 9.58613 -31.2326" stroke="black">
-120.242 631.975 m
-120.242 612.111 l
-195.961 612.111 l
-195.961 631.975 l
-h
-</path>
+<text matrix="1 0 0 1 -6.65072 -29.766" transformations="translations" pos="124.992 617.036" stroke="black" type="label" width="81.649" height="12.896" depth="4.29" valign="baseline" size="LARGE">Learner $(L)$</text>
 <path stroke="black" arrow="pointed/normal">
 160.059 659.668 m
 160.05 605.052 l
 </path>
-<path matrix="0.970212 0 0 1.00176 4.77199 -1.02567" stroke="black" arrow="pointed/normal">
+<path matrix="0.970212 0 0 0.87642 4.77199 67.6624" stroke="black" arrow="pointed/normal">
 160.203 584.205 m
 160.197 548.013 l
 287.851 548.082 l
@@ -428,5 +428,28 @@ h
 456.028 531.963 l
 </path>
 <text matrix="1 0 0 1 326.746 -30.8253" transformations="translations" pos="137.221 577.847" stroke="black" type="label" width="23.747" height="2.009" depth="0" valign="baseline" size="huge" style="math">\dots</text>
+<path matrix="1.03626 0 0 12.547 -17.6875 -6003.77" stroke="black" pen="fat" arrow="fptarc/normal">
+48.035 519.941 m
+487.818 519.917 l
+</path>
+<text matrix="1 0 0 1 -2.72089 -4.45673" transformations="translations" pos="454.438 504.886" stroke="black" type="label" width="36.078" height="11.761" depth="0" valign="baseline" size="LARGE">Time</text>
+<path stroke="black" pen="fat">
+31.994 519.956 m
+31.9972 512.052 l
+</path>
+<path stroke="black" pen="fat">
+240.028 519.782 m
+240.05 511.984 l
+</path>
+<path stroke="darkgray" dash="dashed" pen="fat">
+240.004 800.001 m
+239.972 712.316 l
+</path>
+<path stroke="darkgray" dash="dashed" pen="fat">
+240.002 664.229 m
+239.987 520.009 l
+</path>
+<text matrix="1 0 0 1 -4.8359 38.1556" transformations="translations" pos="33.0926 459.162" stroke="black" type="label" width="7.895" height="11.097" depth="0" valign="baseline" size="LARGE" style="math">0</text>
+<text matrix="1 0 0 1 131.055 11.5011" transformations="translations" pos="106.396 486.123" stroke="black" type="label" width="6.087" height="10.589" depth="0" valign="baseline" size="LARGE" style="math">t</text>
 </page>
 </ipe>

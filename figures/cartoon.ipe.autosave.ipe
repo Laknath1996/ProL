@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70218" creator="Ipe 7.2.29">
-<info created="D:20241014054058" modified="D:20241014055028"/>
+<info created="D:20241014054058" modified="D:20241014130748"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -334,7 +334,7 @@ h
 320.021 636.067 l
 h
 </path>
-<path matrix="0.952827 0 0 1.00586 9.58613 -31.2326" stroke="black" fill="0.553 0.629 0.796" opacity="50%" stroke-opacity="opaque">
+<path matrix="1.19628 0 0 1.22493 -30.1045 -169.988" stroke="black" fill="0.553 0.629 0.796" opacity="50%" stroke-opacity="opaque">
 120.242 631.975 m
 120.242 612.111 l
 195.961 612.111 l
@@ -390,7 +390,7 @@ h
 271.99 715.969 l
 h
 </path>
-<text matrix="1 0 0 1 -5.93146 -2.80564" transformations="translations" pos="116.725 726.368" stroke="black" type="label" width="98.234" height="8.963" depth="3.14" valign="baseline" size="large">Realized Past $(z_{\leq t})$</text>
+<text matrix="1 0 0 1 -44.3664 0.45478" transformations="translations" pos="116.725 726.368" stroke="black" type="label" width="132.973" height="12.896" depth="4.29" valign="baseline" size="LARGE">Realized Past $(z_{\leq t})$</text>
 <text matrix="1 0 0 1 18.9807 55.3362" transformations="translations" pos="268.951 693.997" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+1}</text>
 <text matrix="1 0 0 1 1.67196 57.9985" transformations="translations" pos="350.237 691.552" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+2}</text>
 <text matrix="1 0 0 1 -30.4055 54.3118" transformations="translations" pos="446.202 695.118" stroke="black" type="label" width="32.918" height="8.892" depth="4.2" valign="baseline" size="huge" style="math">z_{t+3}</text>
@@ -407,16 +407,16 @@ h
 <text matrix="1 0 0 1 326.803 173.158" transformations="translations" pos="137.221 577.847" stroke="black" type="label" width="23.747" height="2.009" depth="0" valign="baseline" size="huge" style="math">\dots</text>
 <text matrix="1 0 0 1 326.79 109.215" transformations="translations" pos="137.221 577.847" stroke="black" type="label" width="23.747" height="2.009" depth="0" valign="baseline" size="huge" style="math">\dots</text>
 <text matrix="1 0 0 1 326.732 45.2096" transformations="translations" pos="137.221 577.847" stroke="black" type="label" width="23.747" height="2.009" depth="0" valign="baseline" size="huge" style="math">\dots</text>
-<text matrix="1 0 0 1 192.781 79.8367" transformations="translations" pos="116.725 726.368" stroke="black" type="label" width="117.418" height="8.965" depth="2.99" valign="baseline" size="large">Potential Futures $(z_{&gt; t})$</text>
+<text matrix="1 0 0 1 170.822 79.544" transformations="translations" pos="116.725 726.368" stroke="black" type="label" width="158.514" height="12.896" depth="4.29" valign="baseline" size="LARGE">Potential Futures $(z_{&gt; t})$</text>
 <text matrix="1 0 0 1 -11.2252 8.73919" transformations="translations" pos="300.504 534.904" stroke="black" type="label" width="29.386" height="11.961" depth="3.49" valign="baseline" size="LARGE" style="math">h_{t+1} </text>
 <text matrix="1 0 0 1 -26.3374 6.80088" transformations="translations" pos="380.1 536.794" stroke="black" type="label" width="29.386" height="11.961" depth="3.49" valign="baseline" size="LARGE" style="math">h_{t+2}</text>
 <text matrix="1 0 0 1 -42.9447 5.56698" transformations="translations" pos="460.291 538.241" stroke="black" type="label" width="29.386" height="11.961" depth="3.49" valign="baseline" size="LARGE" style="math">h_{t+3}</text>
-<text matrix="1 0 0 1 4.70315 -25.8071" transformations="translations" pos="124.992 617.036" stroke="black" type="label" width="60.152" height="8.965" depth="2.99" valign="baseline" size="large">Learner $(L)$</text>
+<text matrix="1 0 0 1 -6.65072 -29.766" transformations="translations" pos="124.992 617.036" stroke="black" type="label" width="81.649" height="12.896" depth="4.29" valign="baseline" size="LARGE">Learner $(L)$</text>
 <path stroke="black" arrow="pointed/normal">
 160.059 659.668 m
 160.05 605.052 l
 </path>
-<path matrix="0.970212 0 0 1.00176 4.77199 -1.02567" stroke="black" arrow="pointed/normal">
+<path matrix="0.970212 0 0 0.87642 4.77199 67.6624" stroke="black" arrow="pointed/normal">
 160.203 584.205 m
 160.197 548.013 l
 287.851 548.082 l
@@ -432,7 +432,7 @@ h
 48.035 519.941 m
 487.818 519.917 l
 </path>
-<text matrix="1 0 0 1 -1.15704 -0.535366" transformations="translations" pos="454.438 504.886" stroke="black" type="label" width="26.664" height="8.169" depth="0" valign="baseline" size="large">Time</text>
+<text matrix="1 0 0 1 -2.03494 -1.68008" transformations="translations" pos="454.438 504.886" stroke="black" type="label" width="31.996" height="9.803" depth="0" valign="baseline" size="Large">Time</text>
 <path stroke="black" pen="fat">
 31.994 519.956 m
 31.9972 512.052 l
@@ -449,7 +449,7 @@ h
 240.002 664.229 m
 239.987 520.009 l
 </path>
-<text matrix="1 0 0 1 -4.06279 44.0677" transformations="translations" pos="33.0926 459.162" stroke="black" type="label" width="5.853" height="7.704" depth="0" valign="baseline" size="large" style="math">0</text>
-<text matrix="1 0 0 1 131.513 17.4006" transformations="translations" pos="106.396 486.123" stroke="black" type="label" width="4.227" height="7.353" depth="0" valign="baseline" size="large" style="math">t</text>
+<text matrix="1 0 0 1 -4.376 39.8076" transformations="translations" pos="33.0926 459.162" stroke="black" type="label" width="7.024" height="9.245" depth="0" valign="baseline" size="Large" style="math">0</text>
+<text matrix="1 0 0 1 131.426 14.004" transformations="translations" pos="106.396 486.123" stroke="black" type="label" width="5.073" height="8.824" depth="0" valign="baseline" size="Large" style="math">t</text>
 </page>
 </ipe>
