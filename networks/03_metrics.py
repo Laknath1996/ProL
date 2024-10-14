@@ -87,12 +87,15 @@ if __name__ == "__main__":
     ##### Synthetic data - Scenario 3
     fnames_syn_s3 = ["./checkpoints/scenario3_v2/erm_mlp_errs.pkl",
                      "./checkpoints/scenario3_v2/prospective_mlp_errs.pkl",
+                     "./checkpoints/scenario3_v2/mlp_ft1_errs.pkl",
+                     "./checkpoints/scenario3_v2/mlp_bgd_errs.pkl",
                      ] 
     fout_syn_s3 = "figures/metrics/syn_scenario3.pkl"
 
     ##### Synthetic data - Scenario 3 Markov 2
     fnames_syn_s3_m2 = ["./checkpoints/scenario3_markov2/erm_mlp_errs.pkl",
-                        "./checkpoints/scenario3_markov2/prospective_mlp_errs.pkl"]
+                        "./checkpoints/scenario3_markov2/prospective_mlp_errs.pkl",
+                        ]
     fout_syn_s3_m2 = "figures/metrics/syn_scenario3_markov2.pkl"
 
     ##### Synthetic data - Scenario 3 Markov 2 _ reverse
