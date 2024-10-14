@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 
 
-def create_metrics(fnames, fout, model_names):
+def create_metrics(fnames, fout, model_names, discount=False):
 
     infos = []
     for fname in fnames:
@@ -17,25 +17,49 @@ def create_metrics(fnames, fout, model_names):
     for model in range(len(infos)):
 
         seed_errs = []
+        disc_seed_errs = []
         times = []
 
         for seed in range(len(infos[model])):
             info = infos[model][seed]
 
             errs = []
+            disc_errs = []
+
             for row in info:
                 t, arr = row
                 if seed == 0:
                     times.append(t)
 
                 errs.append(np.mean(arr[t:]))
+
+                # Compute discounted risk
+                if discount:
+                    gamma = 0.9
+                    gamma_vec  = [gamma**i for i in range(len(arr[t:]))]
+
+                    normalization = (1 - gamma**(len(arr[t:]))) / (1 - gamma)
+                    disc_errs.append(np.sum(np.array(arr[t:]) * gamma_vec) / normalization)
+
             seed_errs.append(errs)
+            if discount:
+                disc_seed_errs.append(disc_errs)
+
         seed_errs = np.array(seed_errs)
+        if discount:
+            disc_seed_errs = np.array(disc_seed_errs)
 
         mean = np.mean(seed_errs, axis=0)
         std = np.std(seed_errs, axis=0)
 
-        plot_metrics[model_names[model]] = np.array([mean, std, times])
+        if discount: 
+            disc_mean = np.mean(disc_seed_errs, axis=0)
+            disc_std = np.std(disc_seed_errs, axis=0)
+            plot_metrics[model_names[model]] = np.array(
+                    [mean, std, disc_mean, disc_std, times])
+
+        else:
+            plot_metrics[model_names[model]] = np.array([mean, std, times])
 
     with open(fout, "wb") as fp:
         pickle.dump(plot_metrics, fp)
@@ -136,14 +160,14 @@ if __name__ == "__main__":
     # create_metrics(fnames_syn_s2, fout_syn_s2, model_names_s2)
     # create_metrics(fnames_syn_s3, fout_syn_s3, model_names_s3)
     # create_metrics(fnames_syn_s3_m2, fout_syn_s3_m2, model_names_s3)
-    create_metrics(fnames_syn_s3_m2_s, fout_syn_s3_m2_s, model_names_s3)
+    create_metrics(fnames_syn_s3_m2_s, fout_syn_s3_m2_s, model_names_s3, discount=True)
     
     # create_metrics(fnames_mnist_s2, fout_mnist_s2, model_names_s2)
     # create_metrics(fnames_mnist_s3, fout_mnist_s3, model_names_s3)
     # create_metrics(fnames_mnist_s3_m2, fout_mnist_s3_m2, model_names_s3)
-    create_metrics(fnames_mnist_s3_m2_s, fout_mnist_s3_m2_s, model_names_s3)
+    create_metrics(fnames_mnist_s3_m2_s, fout_mnist_s3_m2_s, model_names_s3, discount=True)
     
     # create_metrics(fnames_cifar_s2, fout_cifar_s2, model_names_s2c)
     # create_metrics(fnames_cifar_s3, fout_cifar_s3, model_names_s3c)
     # create_metrics(fnames_cifar_s3_m2, fout_cifar_s3_m2, model_names_s3)
-    create_metrics(fnames_cifar_s3_m2_s, fout_cifar_s3_m2_s, model_names_s3)
+    create_metrics(fnames_cifar_s3_m2_s, fout_cifar_s3_m2_s, model_names_s3, discount=True)
