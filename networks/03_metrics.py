@@ -35,7 +35,7 @@ def create_metrics(fnames, fout, model_names, discount=False):
 
                 # Compute discounted risk
                 if discount:
-                    gamma = 0.9
+                    gamma = 0.99
                     gamma_vec  = [gamma**i for i in range(len(arr[t:]))]
 
                     normalization = (1 - gamma**(len(arr[t:]))) / (1 - gamma)
