@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
-              outside_legend=False, minimal=False):
-    pass
+              outside_legend=False, minimal=False, discount=False):
     plt.style.use("seaborn-v0_8-whitegrid")
     sns.set(context='poster',
             style='ticks',
@@ -20,6 +19,11 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
 
     cols = ['#377eb8', '#e41a1c', '#4daf4a', '#984ea3',
             '#ff7f00', '#ffff33', '#a65628']
+
+    if discount:
+        for m in info:
+            info[m][0] = info[m][3]
+            info[m][1] = info[m][4]
 
     methods = []
     methods_legend = []
@@ -39,14 +43,24 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
             info[methods[m]]= info[methods[m]][:,::s]
 
     if not minimal:
-        plt.ylabel("Prospective Risk")
+        if not discount:
+            plt.ylabel("Prospective Risk")
+        else:
+            plt.ylabel("Discounted prospective Risk")
     plt.xlabel("Time (t)")
 
     for i, m in enumerate(methods):
         plt.plot(info[m][2], info[m][0], c=cols[i])
 
     if "_m2" in figname:
-        plt.axhline(y=0.2768, color='black', linestyle='--')
+        print(figname)
+        if discount and "_s" in figname:
+            plt.axhline(y=0.3958, color='black', linestyle='--')
+        elif "_s" in figname:
+            plt.axhline(y=0.5, color='black', linestyle='--')
+        else:
+            plt.axhline(y=0.2768, color='black', linestyle='--')
+
     elif not minimal:
         plt.axhline(y=0.0, color='black', linestyle='--')
 
@@ -131,27 +145,41 @@ def cifar_scenario3_m2():
     make_plot(info, "CIFAR Scenario 3", figname="cifar_scenario3_m2",
               plot_index=[0, 1], minimal=True)
 
-def mnist_scenario3_m2_s():
-    info = np.load("./metrics/mnist_scenario3_markov2.pkl", allow_pickle=True)
-    make_plot(info, "MNIST Scenario 3", figname="mnist_scenario3_m2", minimal=True)
+def synthetic_scenario3_m2_s(discount=False):
+    info = np.load("./metrics/syn_scenario3_markov2_s.pkl", allow_pickle=True)
+    suffix = "d" if discount else ""
+    make_plot(info, "Synthetic Scenario 3", figname="syn_scenario3_m2_s" + suffix,
+              discount=discount)
 
-def cifar_scenario3_m2_s():
-    info = np.load("./metrics/cifar_scenario3_markov2.pkl", allow_pickle=True)
-    make_plot(info, "CIFAR Scenario 3", figname="cifar_scenario3_m2",
-              plot_index=[0, 1], minimal=True)
+def mnist_scenario3_m2_s(discount=False):
+    info = np.load("./metrics/mnist_scenario3_markov2_s.pkl", allow_pickle=True)
+    suffix = "d" if discount else ""
+    make_plot(info, "MNIST Scenario 3", figname="mnist_scenario3_m2_s" + suffix,
+              minimal=True, discount=discount)
 
-synthetic_scenario2()
-synthetic_scenario3()
-synthetic_scenario3_m2()
+def cifar_scenario3_m2_s(discount=False):
+    info = np.load("./metrics/cifar_scenario3_markov2_s.pkl", allow_pickle=True)
+    suffix = "d" if discount else ""
+    make_plot(info, "CIFAR Scenario 3", figname="cifar_scenario3_m2_s" + suffix,
+              plot_index=[0, 1], minimal=True, discount=discount)
 
-mnist_scenario2()
-mnist_scenario3()
-mnist_scenario3_m2()
+# synthetic_scenario2()
+# synthetic_scenario3()
+# synthetic_scenario3_m2()
+synthetic_scenario3_m2_s()
+synthetic_scenario3_m2_s(discount=True)
 
-cifar_scenario2()
-cifar_scenario3()
-cifar_scenario3_m2()
+# mnist_scenario2()
+# mnist_scenario3()
+# mnist_scenario3_m2()
+mnist_scenario3_m2_s()
+mnist_scenario3_m2_s(discount=True)
 
-cifar_scenario2_all()
-cifar_scenario3_all()
+# cifar_scenario2()
+# cifar_scenario3()
+cifar_scenario3_m2_s()
+cifar_scenario3_m2_s(discount=True)
+
+# cifar_scenario2_all()
+# cifar_scenario3_all()
 
