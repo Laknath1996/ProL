@@ -71,9 +71,11 @@ if __name__ == "__main__":
 
     model_names_s2c = ["ERM", "Prospective", "Online-SGD", "Bayesian GD",
                        "Prospective (variant 2)", "Prospective (MLP)" ]
-    model_names_s3c = ["ERM", "Prospective", "Online-SGD", "Bayesian GD"]
+    # model_names_s3c = ["ERM", "Prospective", "Online-SGD", "Bayesian GD"]
     model_names_s3c = ["ERM", "Prospective",
-                       "Prospective (variant 2)", "Prospective (MLP)"]
+                       "Online-SGD", "Bayesian GD",
+                       "Prospective (variant 2)", "Prospective (MLP)",
+                       ]
 
     ##### Synthetic data - Scenario 2
     fnames_syn_s2 = ["./checkpoints/scenario2_v2/mlp_erm_errs.pkl",
@@ -158,16 +160,16 @@ if __name__ == "__main__":
     fout_cifar_s3_m2_s = "figures/metrics/cifar_scenario3_markov2_s.pkl"
 
     # create_metrics(fnames_syn_s2, fout_syn_s2, model_names_s2)
-    # create_metrics(fnames_syn_s3, fout_syn_s3, model_names_s3)
+    create_metrics(fnames_syn_s3, fout_syn_s3, model_names_s2)
     # create_metrics(fnames_syn_s3_m2, fout_syn_s3_m2, model_names_s3)
-    create_metrics(fnames_syn_s3_m2_s, fout_syn_s3_m2_s, model_names_s3, discount=True)
+    # create_metrics(fnames_syn_s3_m2_s, fout_syn_s3_m2_s, model_names_s3, discount=True)
     
     # create_metrics(fnames_mnist_s2, fout_mnist_s2, model_names_s2)
-    # create_metrics(fnames_mnist_s3, fout_mnist_s3, model_names_s3)
+    create_metrics(fnames_mnist_s3, fout_mnist_s3, model_names_s2)
     # create_metrics(fnames_mnist_s3_m2, fout_mnist_s3_m2, model_names_s3)
-    create_metrics(fnames_mnist_s3_m2_s, fout_mnist_s3_m2_s, model_names_s3, discount=True)
+    # create_metrics(fnames_mnist_s3_m2_s, fout_mnist_s3_m2_s, model_names_s3, discount=True)
     
     # create_metrics(fnames_cifar_s2, fout_cifar_s2, model_names_s2c)
-    # create_metrics(fnames_cifar_s3, fout_cifar_s3, model_names_s3c)
+    create_metrics(fnames_cifar_s3, fout_cifar_s3, model_names_s3c)
     # create_metrics(fnames_cifar_s3_m2, fout_cifar_s3_m2, model_names_s3)
-    create_metrics(fnames_cifar_s3_m2_s, fout_cifar_s3_m2_s, model_names_s3, discount=True)
+    # create_metrics(fnames_cifar_s3_m2_s, fout_cifar_s3_m2_s, model_names_s3, discount=True)
