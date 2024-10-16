@@ -85,11 +85,38 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
                        ncol=len(methods_legend)+1)
 
     def export_legend(legend, filename="legend.png"):
-        fig  = legend.figure
-        fig.canvas.draw()
-        bbox  = legend.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
-        fig.savefig(filename, dpi="figure", bbox_inches=bbox)
-        legend.remove()
+        # Earlier approach
+        # fig  = legend.figure
+        # fig.canvas.draw()
+        # bbox  = legend.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
+        # fig.savefig(filename, dpi="figure", bbox_inches=bbox)
+        # legend.remove()
+
+        from matplotlib.lines import Line2D
+
+        learners = [text.get_text() for text in legend.get_texts()][:-1]
+        print(learners)
+        cols = ['#377eb8', '#e41a1c', '#4daf4a', '#984ea3',
+            '#ff7f00', '#ffff33', '#a65628']
+
+        fig_legend = plt.figure()
+
+        legend_elements = [
+            Line2D([0], [0], color=cols[i], lw=4, label=learner) for i, learner in enumerate(learners)
+        ] + [
+            Line2D([0], [0], color='k', lw=4, ls='--', label="Bayes Risk")
+        ]
+        
+        fig_legend.legend(
+            handles=legend_elements, 
+            loc='center', 
+            ncol=len(learners)+1, 
+            fontsize=15, 
+            frameon=True,
+            markerscale=2.,
+            scatterpoints=1)
+        fig_legend.savefig(filename, dpi="figure", bbox_inches='tight')
+
 
     if not minimal and not outside_legend:
         export_legend(leg, filename="./figs/aug20/%s_legend.pdf" % figname)
@@ -167,18 +194,18 @@ def cifar_scenario3_m2_s(discount=False):
 # synthetic_scenario3()
 # synthetic_scenario3_m2()
 synthetic_scenario3_m2_s()
-synthetic_scenario3_m2_s(discount=True)
+# synthetic_scenario3_m2_s(discount=True)
 
 # mnist_scenario2()
 # mnist_scenario3()
 # mnist_scenario3_m2()
-mnist_scenario3_m2_s()
-mnist_scenario3_m2_s(discount=True)
+# mnist_scenario3_m2_s()
+# mnist_scenario3_m2_s(discount=True)
 
 # cifar_scenario2()
 # cifar_scenario3()
-cifar_scenario3_m2_s()
-cifar_scenario3_m2_s(discount=True)
+# cifar_scenario3_m2_s()
+# cifar_scenario3_m2_s(discount=True)
 
 # cifar_scenario2_all()
 # cifar_scenario3_all()
