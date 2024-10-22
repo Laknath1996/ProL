@@ -62,11 +62,16 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
             plt.axhline(y=0.5, color='black', linestyle='--')
         else:
             plt.axhline(y=0.2768, color='black', linestyle='--')
-
     elif not minimal:
         if 'cifar' not in figname and 'mnist' not in figname:
             plt.axhline(y=0.0, color='black', linestyle='--')
             add_bayes = True
+
+    # plot chance risk
+    if "syn" in figname:
+        plt.axhline(y=0.5, color='#ff7f00', linestyle='--')
+    elif "mnist" or "cifar" in figname:
+        plt.axhline(y=0.742, color='#ff7f00', linestyle='--')
 
 
     for i, m in enumerate(methods):
@@ -75,6 +80,9 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
         mean = info[m][0]
         plt.fill_between(info[m][2], mean-std, mean+std,
                          alpha=0.3, color=cols[i])
+        
+    plt.savefig("./figs/aug20/%s.pdf" % figname, bbox_inches='tight')
+    # plt.show()
 
     if add_bayes:
         methods_legend = methods_legend + ['Bayes risk']
@@ -92,17 +100,41 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
                        ncol=len(methods_legend)+1)
 
     def export_legend(legend, filename="legend.png"):
-        fig  = legend.figure
-        fig.canvas.draw()
-        bbox  = legend.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
-        fig.savefig(filename, dpi="figure", bbox_inches=bbox)
-        legend.remove()
+        # Earlier approach
+        # fig  = legend.figure
+        # fig.canvas.draw()
+        # bbox  = legend.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
+        # fig.savefig(filename, dpi="figure", bbox_inches=bbox)
+        # legend.remove()
+
+        from matplotlib.lines import Line2D
+
+        learners = [text.get_text() for text in legend.get_texts()][:-1]
+        print(learners)
+        cols = ['#377eb8', '#e41a1c', '#4daf4a', '#984ea3',
+            '#ff7f00', '#ffff33', '#a65628']
+
+        fig_legend = plt.figure()
+
+        legend_elements = [
+            Line2D([0], [0], color=cols[i], lw=4, label=learner) for i, learner in enumerate(learners)
+        ] + [
+            Line2D([0], [0], color='k', lw=4, ls='--', label="Bayes Risk"),
+            Line2D([0], [0], color='#ff7f00', lw=4, ls='--', label="Chance"),
+        ]
+        
+        fig_legend.legend(
+            handles=legend_elements, 
+            loc='center', 
+            ncol=len(learners)+2, 
+            fontsize=15, 
+            frameon=True,
+            markerscale=2.,
+            scatterpoints=1)
+        fig_legend.savefig(filename, dpi="figure", bbox_inches='tight')
 
     if not minimal and not outside_legend:
         export_legend(leg, filename="./figs/aug20/%s_legend.pdf" % figname)
-
-    plt.savefig("./figs/aug20/%s.pdf" % figname, bbox_inches='tight')
-    # plt.show()
 
 def synthetic_scenario2():
     info = np.load("./metrics/syn_scenario2.pkl", allow_pickle=True)

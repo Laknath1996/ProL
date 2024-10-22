@@ -15,3 +15,6 @@ wandb
 .DS_Store
 ._.DS_Store
 prol.egg-info
+
+experiments
+build
