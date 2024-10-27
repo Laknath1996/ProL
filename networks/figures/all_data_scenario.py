@@ -52,8 +52,10 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
     for i, m in enumerate(methods):
         plt.plot(info[m][2], info[m][0], c=cols[i])
 
+    add_bayes = False
     if "_m2" in figname:
         print(figname)
+        add_bayes = True
         if discount and "_s" in figname:
             plt.axhline(y=0.3958, color='black', linestyle='--')
         elif "_s" in figname:
@@ -61,7 +63,9 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
         else:
             plt.axhline(y=0.2768, color='black', linestyle='--')
     elif not minimal:
-        plt.axhline(y=0.0, color='black', linestyle='--')
+        if 'cifar' not in figname and 'mnist' not in figname:
+            plt.axhline(y=0.0, color='black', linestyle='--')
+            add_bayes = True
 
     # plot chance risk
     if "syn" in figname:
@@ -80,14 +84,17 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
     plt.savefig("./figs/aug20/%s.pdf" % figname, bbox_inches='tight')
     # plt.show()
 
+    if add_bayes:
+        methods_legend = methods_legend + ['Bayes risk']
+
     if not minimal:
         if outside_legend:
-            leg = plt.legend(methods_legend + ['Bayes risk'],
+            leg = plt.legend(methods_legend,
                        loc="upper right", markerscale=2.,
                        bbox_to_anchor=(1.82, 0.9),
                        scatterpoints=1, fontsize=15, frameon=True)
         else:
-            leg = plt.legend(methods_legend + ['Bayes risk'],
+            leg = plt.legend(methods_legend,
                        loc="upper right", markerscale=2.,
                        scatterpoints=1, fontsize=15, frameon=True,
                        ncol=len(methods_legend)+1)
@@ -213,5 +220,5 @@ cifar_scenario3()
 # cifar_scenario3_m2_s(discount=True)
 
 # cifar_scenario2_all()
-# cifar_scenario3_all()
+cifar_scenario3_all()
 
