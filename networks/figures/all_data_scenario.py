@@ -153,7 +153,7 @@ def cifar_scenario2():
 def cifar_scenario3():
     info = np.load("./metrics/cifar_scenario3.pkl", allow_pickle=True)
     make_plot(info, "CIFAR Scenario 3", figname="cifar_scenario3",
-              plot_index=[0, 1], minimal=True)
+              plot_index=[0, 1, 2, 3], minimal=True)
 
 def cifar_scenario2_all():
     info = np.load("./metrics/cifar_scenario2.pkl", allow_pickle=True)
