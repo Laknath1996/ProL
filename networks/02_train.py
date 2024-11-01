@@ -9,6 +9,7 @@ from utils.net import create_net
 from utils.runner import train
 from utils.bgd import BGD
 
+
 def create_optimizer(cfg, net):
 
     if 'mnist' or 'cifar' in data.path:
