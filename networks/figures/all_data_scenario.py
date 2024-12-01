@@ -52,17 +52,26 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
     for i, m in enumerate(methods):
         plt.plot(info[m][2], info[m][0], c=cols[i])
 
+    add_bayes = False
     if "_m2" in figname:
         print(figname)
+        add_bayes = True
         if discount and "_s" in figname:
             plt.axhline(y=0.3958, color='black', linestyle='--')
         elif "_s" in figname:
             plt.axhline(y=0.5, color='black', linestyle='--')
         else:
             plt.axhline(y=0.2768, color='black', linestyle='--')
-
     elif not minimal:
-        plt.axhline(y=0.0, color='black', linestyle='--')
+        if 'cifar' not in figname and 'mnist' not in figname:
+            plt.axhline(y=0.0, color='black', linestyle='--')
+            add_bayes = True
+
+    # plot chance risk
+    if "syn" in figname:
+        plt.axhline(y=0.5, color='#ff7f00', linestyle='--')
+    elif "mnist" or "cifar" in figname:
+        plt.axhline(y=0.742, color='#ff7f00', linestyle='--')
 
 
     for i, m in enumerate(methods):
@@ -71,31 +80,61 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
         mean = info[m][0]
         plt.fill_between(info[m][2], mean-std, mean+std,
                          alpha=0.3, color=cols[i])
+        
+    plt.savefig("./figs/aug20/%s.pdf" % figname, bbox_inches='tight')
+    # plt.show()
+
+    if add_bayes:
+        methods_legend = methods_legend + ['Bayes risk']
 
     if not minimal:
         if outside_legend:
-            leg = plt.legend(methods_legend + ['Bayes risk'],
+            leg = plt.legend(methods_legend,
                        loc="upper right", markerscale=2.,
                        bbox_to_anchor=(1.82, 0.9),
                        scatterpoints=1, fontsize=15, frameon=True)
         else:
-            leg = plt.legend(methods_legend + ['Bayes risk'],
+            leg = plt.legend(methods_legend,
                        loc="upper right", markerscale=2.,
                        scatterpoints=1, fontsize=15, frameon=True,
                        ncol=len(methods_legend)+1)
 
     def export_legend(legend, filename="legend.png"):
-        fig  = legend.figure
-        fig.canvas.draw()
-        bbox  = legend.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
-        fig.savefig(filename, dpi="figure", bbox_inches=bbox)
-        legend.remove()
+        # Earlier approach
+        # fig  = legend.figure
+        # fig.canvas.draw()
+        # bbox  = legend.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
+        # fig.savefig(filename, dpi="figure", bbox_inches=bbox)
+        # legend.remove()
+
+        from matplotlib.lines import Line2D
+
+        learners = [text.get_text() for text in legend.get_texts()][:-1]
+        print(learners)
+        cols = ['#377eb8', '#e41a1c', '#4daf4a', '#984ea3',
+            '#ff7f00', '#ffff33', '#a65628']
+
+        fig_legend = plt.figure()
+
+        legend_elements = [
+            Line2D([0], [0], color=cols[i], lw=4, label=learner) for i, learner in enumerate(learners)
+        ] + [
+            Line2D([0], [0], color='k', lw=4, ls='--', label="Bayes Risk"),
+            Line2D([0], [0], color='#ff7f00', lw=4, ls='--', label="Chance"),
+        ]
+        
+        fig_legend.legend(
+            handles=legend_elements, 
+            loc='center', 
+            ncol=len(learners)+2, 
+            fontsize=15, 
+            frameon=True,
+            markerscale=2.,
+            scatterpoints=1)
+        fig_legend.savefig(filename, dpi="figure", bbox_inches='tight')
 
     if not minimal and not outside_legend:
         export_legend(leg, filename="./figs/aug20/%s_legend.pdf" % figname)
-
-    plt.savefig("./figs/aug20/%s.pdf" % figname, bbox_inches='tight')
-    # plt.show()
 
 def synthetic_scenario2():
     info = np.load("./metrics/syn_scenario2.pkl", allow_pickle=True)
@@ -121,7 +160,7 @@ def cifar_scenario2():
 def cifar_scenario3():
     info = np.load("./metrics/cifar_scenario3.pkl", allow_pickle=True)
     make_plot(info, "CIFAR Scenario 3", figname="cifar_scenario3",
-              plot_index=[0, 1], minimal=True)
+              plot_index=[0, 1, 2, 3], minimal=True)
 
 def cifar_scenario2_all():
     info = np.load("./metrics/cifar_scenario2.pkl", allow_pickle=True)
@@ -166,20 +205,20 @@ def cifar_scenario3_m2_s(discount=False):
 # synthetic_scenario2()
 # synthetic_scenario3()
 # synthetic_scenario3_m2()
-synthetic_scenario3_m2_s()
-synthetic_scenario3_m2_s(discount=True)
+# synthetic_scenario3_m2_s()
+# synthetic_scenario3_m2_s(discount=True)
 
 # mnist_scenario2()
 # mnist_scenario3()
 # mnist_scenario3_m2()
-mnist_scenario3_m2_s()
-mnist_scenario3_m2_s(discount=True)
+# mnist_scenario3_m2_s()
+# mnist_scenario3_m2_s(discount=True)
 
 # cifar_scenario2()
-# cifar_scenario3()
-cifar_scenario3_m2_s()
-cifar_scenario3_m2_s(discount=True)
+cifar_scenario3()
+# cifar_scenario3_m2_s()
+# cifar_scenario3_m2_s(discount=True)
 
 # cifar_scenario2_all()
-# cifar_scenario3_all()
+cifar_scenario3_all()
 
