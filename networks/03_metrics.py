@@ -166,12 +166,12 @@ if __name__ == "__main__":
     # create_metrics(fnames_syn_s3_m2, fout_syn_s3_m2, model_names_s3)
     # create_metrics(fnames_syn_s3_m2_s, fout_syn_s3_m2_s, model_names_s3, discount=True)
     
-    # create_metrics(fnames_mnist_s2, fout_mnist_s2, model_names_s2)
+    create_metrics(fnames_mnist_s2, fout_mnist_s2, model_names_s2)
     # create_metrics(fnames_mnist_s3, fout_mnist_s3, model_names_s2)
     # create_metrics(fnames_mnist_s3_m2, fout_mnist_s3_m2, model_names_s3)
     # create_metrics(fnames_mnist_s3_m2_s, fout_mnist_s3_m2_s, model_names_s3, discount=True)
     
     # create_metrics(fnames_cifar_s2, fout_cifar_s2, model_names_s2c)
-    create_metrics(fnames_cifar_s3, fout_cifar_s3, model_names_s2c)
+    # create_metrics(fnames_cifar_s3, fout_cifar_s3, model_names_s2c)
     # create_metrics(fnames_cifar_s3_m2, fout_cifar_s3_m2, model_names_s3)
     # create_metrics(fnames_cifar_s3_m2_s, fout_cifar_s3_m2_s, model_names_s3, discount=True)
