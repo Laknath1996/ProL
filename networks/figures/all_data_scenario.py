@@ -145,6 +145,7 @@ def synthetic_scenario3():
     make_plot(info, "Synthetic Scenario 3", figname="syn_scenario3")
 
 def mnist_scenario2():
+    import ipdb; ipdb.set_trace()
     info = np.load("./metrics/mnist_scenario2.pkl", allow_pickle=True)
     make_plot(info, "MNIST Scenario 2", figname="mnist_scenario2", minimal=True)
 
@@ -208,17 +209,17 @@ def cifar_scenario3_m2_s(discount=False):
 # synthetic_scenario3_m2_s()
 # synthetic_scenario3_m2_s(discount=True)
 
-# mnist_scenario2()
+mnist_scenario2()
 # mnist_scenario3()
 # mnist_scenario3_m2()
 # mnist_scenario3_m2_s()
 # mnist_scenario3_m2_s(discount=True)
 
 # cifar_scenario2()
-cifar_scenario3()
+# cifar_scenario3()
 # cifar_scenario3_m2_s()
 # cifar_scenario3_m2_s(discount=True)
 
 # cifar_scenario2_all()
-cifar_scenario3_all()
+# cifar_scenario3_all()
 
