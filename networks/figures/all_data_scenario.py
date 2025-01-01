@@ -8,7 +8,7 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
     plt.style.use("seaborn-v0_8-whitegrid")
     sns.set(context='poster',
             style='ticks',
-            font_scale=0.75,
+            font_scale=0.9,
             rc={'axes.grid':True,
                 'grid.color':'.9',
                 'figure.autolayout': not outside_legend,
@@ -50,7 +50,15 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
     plt.xlabel("Time (t)")
 
     for i, m in enumerate(methods):
-        plt.plot(info[m][2], info[m][0], c=cols[i])
+        plt.plot(info[m][2], info[m][0], c=cols[i], lw=4)
+
+    tmp = []
+    for m in info:
+        tmp.append(info[m][2][-1])
+    min_lim = min(tmp)
+
+    plt.xlim([0, min_lim])
+    plt.yticks([0.0, 0.5, 1.0])
 
     add_bayes = False
     if "_m2" in figname:
@@ -71,7 +79,9 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
     if "syn" in figname:
         plt.axhline(y=0.5, color='#ff7f00', linestyle='--')
     elif "mnist" or "cifar" in figname:
+        y = 0.742
         plt.axhline(y=0.742, color='#ff7f00', linestyle='--')
+        # plt.plot([0, info[m][2][-1]], [y, y], color='#ff7f00', linestyle='--')
 
 
     for i, m in enumerate(methods):
@@ -142,24 +152,24 @@ def synthetic_scenario2():
 
 def synthetic_scenario3():
     info = np.load("./metrics/syn_scenario3.pkl", allow_pickle=True)
-    make_plot(info, "Synthetic Scenario 3", figname="syn_scenario3")
+    make_plot(info, "Synthetic", figname="syn_scenario3")
 
 def mnist_scenario2():
     info = np.load("./metrics/mnist_scenario2.pkl", allow_pickle=True)
-    make_plot(info, "MNIST Scenario 2", figname="mnist_scenario2", minimal=True)
+    make_plot(info, "MNIST", figname="mnist_scenario2", minimal=False)
 
 def mnist_scenario3():
     info = np.load("./metrics/mnist_scenario3.pkl", allow_pickle=True)
-    make_plot(info, "MNIST Scenario 3", figname="mnist_scenario3", minimal=True)
+    make_plot(info, "MNIST", figname="mnist_scenario3", minimal=True)
 
 def cifar_scenario2():
     info = np.load("./metrics/cifar_scenario2.pkl", allow_pickle=True)
-    make_plot(info, "CIFAR Scenario 2", figname="cifar_scenario2",
+    make_plot(info, "CIFAR", figname="cifar_scenario2",
               plot_index=[0, 1, 2, 3], subsample=[(2, 2), (3, 2)], minimal=True)
 
 def cifar_scenario3():
     info = np.load("./metrics/cifar_scenario3.pkl", allow_pickle=True)
-    make_plot(info, "CIFAR Scenario 3", figname="cifar_scenario3",
+    make_plot(info, "CIFAR", figname="cifar_scenario3",
               plot_index=[0, 1, 2, 3], minimal=True)
 
 def cifar_scenario2_all():
@@ -203,22 +213,22 @@ def cifar_scenario3_m2_s(discount=False):
               plot_index=[0, 1], minimal=True, discount=discount)
 
 # synthetic_scenario2()
-# synthetic_scenario3()
+synthetic_scenario3()
 # synthetic_scenario3_m2()
 # synthetic_scenario3_m2_s()
 # synthetic_scenario3_m2_s(discount=True)
 
-# mnist_scenario2()
-# mnist_scenario3()
+mnist_scenario2()
+mnist_scenario3()
 # mnist_scenario3_m2()
 # mnist_scenario3_m2_s()
 # mnist_scenario3_m2_s(discount=True)
 
-# cifar_scenario2()
+cifar_scenario2()
 cifar_scenario3()
 # cifar_scenario3_m2_s()
 # cifar_scenario3_m2_s(discount=True)
 
 # cifar_scenario2_all()
-cifar_scenario3_all()
+# cifar_scenario3_all()
 
