@@ -24,6 +24,10 @@ def create_net(cfg):
         net = MLP(3072, 5, 512)
     elif cfg.net.type == 'prospective_mlp_cifar':
         net = ProspectiveMLP(cfg, 3072, 5, 512)
+    elif cfg.net.type == 'minimlp':
+        net = MLP(1, 2, 2)
+    elif cfg.net.type == 'miniprospective_mlp':
+        net = ProspectiveMLP(cfg, 1, 2, 2)
     else:
         raise NotImplementedError
 

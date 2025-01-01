@@ -1,6 +1,6 @@
 deploy: False
 seed: 0
-dev: 'cuda:0'
+dev: 'cpu'
 
 tag: scratch
 name: 'mlp_scenario2_period20'
@@ -22,7 +22,7 @@ train:
 
 data:
   bs: 32
-  workers: 4
+  workers: 0
   path: "./data/synthetic/scenario2_period20.pkl"
 
   #

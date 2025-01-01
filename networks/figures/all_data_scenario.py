@@ -63,10 +63,14 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
     add_bayes = False
     if "_m2" in figname:
         print(figname)
+        # import ipdb; ipdb.set_trace()
         add_bayes = True
-        if discount and "_s" in figname:
+        # Get string after second _
+        fignames = figname.split("_")
+
+        if discount and "_s" in  fignames[-1]:
             plt.axhline(y=0.3958, color='black', linestyle='--')
-        elif "_s" in figname:
+        elif "_s" in fignames[-1]:
             plt.axhline(y=0.5, color='black', linestyle='--')
         else:
             plt.axhline(y=0.2768, color='black', linestyle='--')
@@ -78,11 +82,20 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
     # plot chance risk
     if "syn" in figname:
         plt.axhline(y=0.5, color='#ff7f00', linestyle='--')
+        # methods_legend += ['Chance']
     elif "mnist" or "cifar" in figname:
+<<<<<<< HEAD
         y = 0.742
         plt.axhline(y=0.742, color='#ff7f00', linestyle='--')
         # plt.plot([0, info[m][2][-1]], [y, y], color='#ff7f00', linestyle='--')
+=======
+>>>>>>> 47471addf599a7c729c9777e977ac5d507a5e33a
 
+        if "_m2" in  figname:
+            plt.axhline(y=0.8, color='#ff7f00', linestyle='--')
+        else:
+            plt.axhline(y=0.742, color='#ff7f00', linestyle='--')
+        # methods_legend += ['Chance']
 
     for i, m in enumerate(methods):
         plt.scatter(info[m][2], info[m][0], c=cols[i], s=size)
@@ -91,11 +104,11 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
         plt.fill_between(info[m][2], mean-std, mean+std,
                          alpha=0.3, color=cols[i])
         
+    if add_bayes:
+        methods_legend = methods_legend + ['Bayes risk'] 
+
     plt.savefig("./figs/aug20/%s.pdf" % figname, bbox_inches='tight')
     # plt.show()
-
-    if add_bayes:
-        methods_legend = methods_legend + ['Bayes risk']
 
     if not minimal:
         if outside_legend:
@@ -108,6 +121,7 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
                        loc="upper right", markerscale=2.,
                        scatterpoints=1, fontsize=15, frameon=True,
                        ncol=len(methods_legend)+1)
+
 
     def export_legend(legend, filename="legend.png"):
         # Earlier approach
@@ -143,6 +157,7 @@ def make_plot(info, title, figname, size=50, plot_index=None, subsample=None,
             scatterpoints=1)
         fig_legend.savefig(filename, dpi="figure", bbox_inches='tight')
 
+    # if not minimal and not outside_legend:
     if not minimal and not outside_legend:
         export_legend(leg, filename="./figs/aug20/%s_legend.pdf" % figname)
 
@@ -213,6 +228,7 @@ def cifar_scenario3_m2_s(discount=False):
               plot_index=[0, 1], minimal=True, discount=discount)
 
 # synthetic_scenario2()
+<<<<<<< HEAD
 synthetic_scenario3()
 # synthetic_scenario3_m2()
 # synthetic_scenario3_m2_s()
@@ -228,6 +244,24 @@ cifar_scenario2()
 cifar_scenario3()
 # cifar_scenario3_m2_s()
 # cifar_scenario3_m2_s(discount=True)
+=======
+# synthetic_scenario3()
+synthetic_scenario3_m2()
+synthetic_scenario3_m2_s()
+synthetic_scenario3_m2_s(discount=True)
+
+# mnist_scenario2()
+# mnist_scenario3()
+mnist_scenario3_m2()
+mnist_scenario3_m2_s()
+mnist_scenario3_m2_s(discount=True)
+
+# cifar_scenario2()
+# cifar_scenario3()
+cifar_scenario3_m2()
+cifar_scenario3_m2_s()
+cifar_scenario3_m2_s(discount=True)
+>>>>>>> 47471addf599a7c729c9777e977ac5d507a5e33a
 
 # cifar_scenario2_all()
 # cifar_scenario3_all()
